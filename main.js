@@ -11,7 +11,6 @@
 
 let intElemClientWidth = 900 //window.innerWidth;
 let intElemClientHeight = 700 //intElemClientWidth //* .5625;
-console.log(intElemClientWidth, intElemClientHeight)
 let canvasWidth = intElemClientWidth;
 let canvasHeight = intElemClientHeight;
 let keyPressed, mousexy;
@@ -48,7 +47,7 @@ let ship = {
 function resetEverything() {
     makeObjectsInSpaceArray();
     //resetShip();
-    for (i = 0; i < objectsInSpace.length; i++) {
+    for (let i = 0; i < objectsInSpace.length; i++) {
 
         objectsInSpace[i].hit = false;
     }
@@ -62,6 +61,7 @@ function resetEverything() {
     ship.velocityx = 0;
     ship.velocityy = 0;
     ship.score = 0;
+    ship.winnerAmount = 15;
     // makeObjectsInSpace();
 
 }
@@ -141,7 +141,7 @@ function checkForButtonTrigger() {
 }
 
 function checkForWinner() {
-    if (objectsInSpace.length < 14) {
+    if (objectsInSpace.length < ship.winnerAmount) {
         ship.winner = true;
     }
 }
@@ -158,8 +158,9 @@ function makeInfoBox() {
 }
 
 function handleResumeButtonClick() {
-    console.log(infoBox);
-    updateScore(infoBox);
+    let infoBox = document.
+    getElementById('infoBox');
+    updateScore();
     infoBox.setAttribute("style", "display:none;");
     buttonTrigger = false;
     ship.playSound = true;
@@ -172,12 +173,10 @@ function handleRestartButtonClick() {
     checkForButtonTrigger();
 }
 
-
 function updateScore() {
     let scored = 0;
     q1 = document.getElementById('q1');
     q2 = document.getElementById('q2');
-    console.log(q1.checked, q2.checked)
     if (q1.checked == ship.planetHit.question[0].q1) {
         scored += 50;
     }
@@ -194,8 +193,8 @@ function makeYouWonBox() {
     infoBox.setAttribute("style", "display:inline-block;");
 }
 
-
-function setInfoBoxContent(infoBox) {
+function setInfoBoxContent() {
+    let infoBox = document.getElementById("infoBox")
     landing.currentTime = 0;
     landing.play();
     const planetName = document.createElement("p");
@@ -263,11 +262,9 @@ function setInfoBoxContent(infoBox) {
     resumeButton.setAttribute("onclick", 'handleResumeButtonClick()')
     infoBox.appendChild(resumeButton);
     ship.playSound = false;
-
 }
 
 function setYouWonBoxContent(infoBox) {
-
     while (infoBox.firstChild) {
         infoBox.removeChild(infoBox.firstChild);
     }
@@ -292,7 +289,7 @@ function detectCollisions() {
         const dy = ship.y - objInSpace.location.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         if (distance < (objInSpace.size + 10) && (ship.objectsHit.indexOf(objInSpace.name) < 0)) { //
-            buttonTrigger = true;
+            buttonTrigger = "resume";
             ship.velocityx = ship.velocityx / 2;
             ship.velocityy = ship.velocityy / 2;
             objInSpace.hit = true;
@@ -301,7 +298,6 @@ function detectCollisions() {
         }
     }
 }
-
 
 //Text display on screen:  
 function text(ctx) {
@@ -320,7 +316,7 @@ function makeUpperListOfObjectsHit(ctx) {
     ctx.fillStyle = "white";
     ctx.font = "14px serif";
     ctx.fillText((objectsInSpace.length) + " left ", (canvasWidth - 100), 20);
-    for (i = 0; i < objectsInSpace.length; i++) {
+    for (let i = 0; i < objectsInSpace.length; i++) {
         ctx.fillStyle = "white";
         ctx.font = "14px serif";
         ctx.fillText(objectsInSpace[i].name, (canvasWidth - 100), (40 + i * 20));
@@ -350,11 +346,6 @@ function setDirection() {
     ship.vector.y = Math.sin((ship.direction * Math.PI) / 180); //* magnitude;
 }
 
-// get the magnitude of the vector for using mousefsfsfsfsfsfsfs
-//function getMagnitude() {
-// use pythagoras theorem to work out the magnitude of the vector
-//   return Math.sqrt(ship.x * ship.x + ship.y * ship.y);
-//}
 function playSound() {
     if (ship.playSound == true) {
         fireBooster.currentTime = 0;
@@ -395,7 +386,7 @@ function makeShip(ctx) {
 //j=74 k = 75 rightArrow = 39  leftArrow = 37  upArrow 38  down 40
 
 function logKey(logKey) {
-    console.log(logKey.keyCode)
+
     if (logKey.keyCode == 39) {
         ship.direction += 5;
     }
@@ -405,7 +396,7 @@ function logKey(logKey) {
     if (logKey.keyCode == 38 || logKey.keyCode == 67) {
         boost(ship);
     }
-    if (logKey.keyCode == 13 && buttonTrigger == true) {
+    if (logKey.keyCode == 13 && buttonTrigger == "resume") {
         buttonTrigger == false;
         handleResumeButtonClick()
     }
