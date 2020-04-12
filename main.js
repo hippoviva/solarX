@@ -1,22 +1,9 @@
-//todo:
-//make a splash page------
-// make it follow and respond to a mouse
-// complete planet & moon information
-//make a question page popup----------
-//make points on questions correct------------
-//make proper sounds - Done-------------
-// make a reset button and winner div-----------s
-//let elementContainer = document.getElementById("container")
-//let element = getElementById("container");
-
 let intElemClientWidth = 900 //window.innerWidth;
 let intElemClientHeight = 700 //intElemClientWidth //* .5625;
 let canvasWidth = intElemClientWidth;
 let canvasHeight = intElemClientHeight;
 let keyPressed, mousexy;
-let fireBooster = new Audio("sounds/hollowhiss.wav"); // buffers automatically when created
-let landing = new Audio("sounds/landinggrass.wav"); // buffers automatically when created
-let yay = new Audio("sounds/celebration.wav"); // buffers automatically when created
+
 let buttonTrigger = false;
 let objectsInSpace = [];
 let offsetAmount = {
@@ -26,6 +13,8 @@ let offsetAmount = {
 
 
 let ship = {
+    noFlameImageFile: 'rocketNoFlame.png',
+    flameImageFile: 'rocketWithFlame.png',
     x: canvasWidth / 2,
     y: canvasHeight / 2,
     direction: 0,
@@ -42,7 +31,8 @@ let ship = {
     },
     objectsHit: ["Objects hit"]
 };
-
+const rocketNoFlame = new Image(200, 200);
+rocketNoFlame.src = 'imagesfiles/rocketNoFlame.png';
 
 function preload() {
 
@@ -58,9 +48,14 @@ function preload() {
         sun
     ];
     for (let i = 0; i < listOfImageObjects.length; i++) {
-        listOfImageObjects[i].image = new Image(250, 250);
+        listOfImageObjects[i].image = new Image(150, 150);
         listOfImageObjects[i].image.src = "imagesfiles/" + listOfImageObjects[i].imageSource;
     }
+    //   ship.rocketNoFlame = new Image(200, 200);
+    //   ship.rocketNoFlame.src = "imagesfiles/" + ship.noFlameImageFile;
+    //   ship.rocketWithFlame = new Image(200, 200);
+    //   ship.rocketWithFlame.src = "imagesfiles/" + ship.flameImageFIle;
+
 }
 
 preload();
@@ -81,11 +76,10 @@ function loadAtStart() {
         ganymede,
         calisto,
         enceladus,
-        titan,
-        sun
+        titan
     ];
     for (let i = 0; i < listOfImageObjects.length; i++) {
-        listOfImageObjects[i].image = new Image(250, 250);
+        listOfImageObjects[i].image = new Image(150, 150);
         listOfImageObjects[i].image.src = "imagesfiles/" + listOfImageObjects[i].imageSource;
     }
     return ("done")
@@ -152,6 +146,9 @@ function mouseloc() {
         false
     );
 }
+let fireBooster = new Audio("sounds/hollowhiss.wav"); // buffers automatically when created
+
+let yay = new Audio("sounds/celebration.wav"); // buffers automatically when created
 
 function init() {
     resetEverything();
@@ -244,6 +241,7 @@ function makeYouWonBox() {
 
 function setInfoBoxContent() {
     let infoBox = document.getElementById("infoBox")
+    let landing = new Audio("sounds/grass.wav"); // buffers automatically when created
     landing.currentTime = 0;
     landing.play();
     const planetName = document.createElement("p");
@@ -349,11 +347,11 @@ function detectCollisions() {
 //Text display on screen:  
 function text(ctx) {
     ctx.fillStyle = "white ";
-    ctx.font = "18px serif ⬆️";
+    ctx.font = "18px serif";
     ctx.fillText("Score: " + ship.score, canvasWidth - 100, canvasHeight - 60);
     ctx.fillStyle = 'rgba(255,255,255,.5'
-    ctx.fillText("⬅️ or ➡️ Turn Ship", 20, 20);
-    ctx.fillText("⬆️ = Boost", 20, 40);
+    ctx.fillText("left and righ arrow turn ship", 20, 20);
+    ctx.fillText("Up arrow is Boost", 20, 40);
     ctx.fillStyle = "white ";
     makeUpperListOfObjectsHit(ctx);
 
@@ -408,9 +406,7 @@ function boost(ship) {
 }
 
 function makeShip(ctx) {
-    updateShip();
-    const rocketNoFlame = new Image(200, 200);
-    rocketNoFlame.src = 'imagesfiles/rocketNoFlame.png';
+    updateShip()
     const rocketWithFlame = new Image(200, 200);
     rocketWithFlame.src = 'imagesfiles/rocketWithFlame.png';
     const pos = ship;
@@ -567,11 +563,6 @@ function orbitLine2(ctx, planetInfo) {
 
 function makeSun(ctx) {
     let img = sun.image //new Image();
-    // img.src = "imagesfiles/" + sun.imageSource;
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.webkitImageSmoothingEnabled = false;
-    ctx.msImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
     ctx.drawImage(img, canvasWidth / 2 - 40 + offsetAmount.x, canvasHeight / 2 - 40 + offsetAmount.y, 80, 80);
 }
 
