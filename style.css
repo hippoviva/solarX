@@ -43,7 +43,7 @@ body {
   width: auto;
   top: 20%; /* modified */
   left: 30%; /* modified */
-  box-shadow: 5px 5px 5px rgba(150, 50, 20, 0.5);
+  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
   border-radius: 15%;
   text-align: center;
   z-index: 30;

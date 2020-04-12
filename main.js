@@ -44,11 +44,43 @@ let ship = {
 };
 
 
+function preload() {
+
+    const listOfImageObjects = [
+        mercury,
+        venus,
+        earth,
+        mars,
+        jupiter,
+        saturn,
+        uranus,
+        neptune,
+        moon,
+        phobos,
+        deimos,
+        io,
+        europa,
+        ganymede,
+        calisto,
+        enceladus,
+        titan,
+        sun
+    ];
+    for (let i = 0; i < listOfImageObjects.length; i++) {
+        listOfImageObjects[i].image = new Image(250, 250);
+        listOfImageObjects[i].image.src = "imagesfiles/" + listOfImageObjects[i].imageSource;
+    }
+
+}
+
+//-- usage --//
+preload()
+
+
 function resetEverything() {
     makeObjectsInSpaceArray();
     //resetShip();
     for (let i = 0; i < objectsInSpace.length; i++) {
-
         objectsInSpace[i].hit = false;
     }
     buttonTrigger = false;
@@ -67,7 +99,7 @@ function resetEverything() {
 }
 
 function makeObjectsInSpaceArray() {
-    listOfObjectsInSpace = [
+    const listOfObjectsInSpace = [
         mercury,
         venus,
         earth,
@@ -168,6 +200,7 @@ function handleResumeButtonClick() {
 }
 
 function handleRestartButtonClick() {
+    let infoBox = document.getElementById('infoBox');
     infoBox.setAttribute("style", "display:none;");
     resetEverything();
     checkForButtonTrigger();
@@ -175,8 +208,8 @@ function handleRestartButtonClick() {
 
 function updateScore() {
     let scored = 0;
-    q1 = document.getElementById('q1');
-    q2 = document.getElementById('q2');
+    let q1 = document.getElementById('q1');
+    let q2 = document.getElementById('q2');
     if (q1.checked == ship.planetHit.question[0].q1) {
         scored += 50;
     }
@@ -201,9 +234,7 @@ function setInfoBoxContent() {
     while (infoBox.firstChild) {
         infoBox.removeChild(infoBox.firstChild);
     }
-    const planetImage = new Image(100, 100);
-    planetImage.src = "imagesfiles/" + ship.planetHit.imageSource;
-    infoBox.appendChild(planetImage);
+    infoBox.appendChild(ship.planetHit.image);
     planetName.textContent = ship.planetHit.name;
     infoBox.appendChild(planetName);
     const ul = document.createElement("span");
@@ -488,7 +519,7 @@ function makePlanet(time, ctx, planetInfo) {
     );
     const planetImage = new Image(200, 200);
     planetImage.src = "imagesfiles/" + planetInfo.imageSource;
-    ctx.drawImage(planetImage, planetInfo.location.x - planetInfo.size, planetInfo.location.y - planetInfo.size, planetInfo.size * 2, planetInfo.size * 2);
+    ctx.drawImage(planetInfo.image, planetInfo.location.x - planetInfo.size, planetInfo.location.y - planetInfo.size, planetInfo.size * 2, planetInfo.size * 2);
     if (planetInfo.moons[0].name != "none") {
         makeMoons(time, ctx, planetInfo);
     }
@@ -519,8 +550,8 @@ function orbitLine2(ctx, planetInfo) {
 }
 
 function makeSun(ctx) {
-    let img = new Image();
-    img.src = "imagesfiles/" + sun.imageSource;
+    let img = sun.image //new Image();
+    // img.src = "imagesfiles/" + sun.imageSource;
     ctx.mozImageSmoothingEnabled = false;
     ctx.webkitImageSmoothingEnabled = false;
     ctx.msImageSmoothingEnabled = false;
