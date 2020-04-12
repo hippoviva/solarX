@@ -70,11 +70,14 @@ function preload() {
         listOfImageObjects[i].image = new Image(250, 250);
         listOfImageObjects[i].image.src = "imagesfiles/" + listOfImageObjects[i].imageSource;
     }
-
+    return ("done")
 }
 
-//-- usage --//
-preload()
+preload();
+window.onload = (event) => {
+    console.log('page is fully loaded');
+    window.requestAnimationFrame(draw);
+};
 
 
 function resetEverything() {
@@ -140,7 +143,7 @@ function mouseloc() {
 function init() {
     resetEverything();
     mouseloc();
-    window.requestAnimationFrame(draw);
+    // window.requestAnimationFrame(draw);
 }
 
 function draw() {
