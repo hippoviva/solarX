@@ -55,6 +55,24 @@ function preload() {
         saturn,
         uranus,
         neptune,
+        sun
+    ];
+    for (let i = 0; i < listOfImageObjects.length; i++) {
+        listOfImageObjects[i].image = new Image(250, 250);
+        listOfImageObjects[i].image.src = "imagesfiles/" + listOfImageObjects[i].imageSource;
+    }
+}
+
+preload();
+window.onload = (event) => {
+    console.log('page is fully loaded');
+    window.requestAnimationFrame(draw);
+    loadAtStart();
+};
+
+function loadAtStart() {
+
+    const listOfImageObjects = [
         moon,
         phobos,
         deimos,
@@ -73,11 +91,6 @@ function preload() {
     return ("done")
 }
 
-preload();
-window.onload = (event) => {
-    console.log('page is fully loaded');
-    window.requestAnimationFrame(draw);
-};
 
 
 function resetEverything() {
