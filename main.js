@@ -109,7 +109,7 @@ function resetEverything() {
     ship.velocityx = 0;
     ship.velocityy = 0;
     ship.score = 0;
-    ship.winnerAmount = 15;
+    ship.winnerAmount = 1;
     // makeObjectsInSpace();
 
 }
