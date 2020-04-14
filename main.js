@@ -58,13 +58,6 @@ function preload() {
 
 }
 
-preload();
-window.onload = (event) => {
-    console.log('page is fully loaded');
-    window.requestAnimationFrame(draw);
-    loadAtStart();
-};
-
 function loadAtStart() {
 
     const listOfImageObjects = [
@@ -84,6 +77,13 @@ function loadAtStart() {
     }
     return ("done")
 }
+
+preload();
+window.onload = (event) => {
+    console.log('page is fully loaded');
+    window.requestAnimationFrame(draw);
+    loadAtStart();
+};
 
 
 
@@ -146,9 +146,10 @@ function mouseloc() {
         false
     );
 }
-let fireBooster = new Audio("sounds/hollowhiss.wav"); // buffers automatically when created
+const fireBooster = new Audio("sounds/hollowhiss.wav"); // buffers automatically when created
+const landingSound = new Audio("sounds/grass.wav"); // buffers automatically when created
 
-let yay = new Audio("sounds/celebration.wav"); // buffers automatically when created
+const yay = new Audio("sounds/celebration.wav"); // buffers automatically when created
 
 function init() {
     resetEverything();
@@ -241,9 +242,8 @@ function makeYouWonBox() {
 
 function setInfoBoxContent() {
     let infoBox = document.getElementById("infoBox")
-    let landing = new Audio("sounds/grass.wav"); // buffers automatically when created
-    landing.currentTime = 0;
-    landing.play();
+    // landing.currentTime = 0;
+    landingSound.play();
     const planetName = document.createElement("p");
     while (infoBox.firstChild) {
         infoBox.removeChild(infoBox.firstChild);
@@ -316,7 +316,7 @@ function setYouWonBoxContent(infoBox) {
     const messageGroup = document.createElement("span");
     infoBox.appendChild(messageGroup);
     const youWonBanner = document.createElement("h2");
-    youWonBanner.textContent = "You competed your mission";
+    youWonBanner.textContent = "  You competed your mission!!  ";
     messageGroup.appendChild(youWonBanner);
 
     const restartButton = document.createElement('button');
@@ -324,9 +324,9 @@ function setYouWonBoxContent(infoBox) {
     restartButton.setAttribute("id", "Resart")
     restartButton.setAttribute("onclick", 'handleRestartButtonClick()')
     infoBox.appendChild(restartButton);
-    ship.playSound = false;
+    ship.playSound = true;
 }
-
+//On this function objInSpace is an object reference to the object hit.
 function detectCollisions() {
     for (let i = 0; i < objectsInSpace.length; i++) {
         const objInSpace = objectsInSpace[i];
@@ -391,7 +391,7 @@ function setDirection() {
     ship.vector.y = Math.sin((ship.direction * Math.PI) / 180); //* magnitude;
 }
 
-function playSound() {
+function playSound1() {
     if (ship.playSound == true) {
         fireBooster.currentTime = 0;
         fireBooster.play();
@@ -402,7 +402,7 @@ function boost(ship) {
     ship.boost = true;
     ship.velocityx += 0.05 * ship.vector.x;
     ship.velocityy += 0.05 * ship.vector.y;
-    playSound();
+    playSound1();
 }
 
 function makeShip(ctx) {
