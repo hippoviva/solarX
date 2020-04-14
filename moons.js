@@ -388,7 +388,7 @@ const moon4 = {
     speed: 20,
     angle: 120,
     color: "white",
-    hit: false,
+    hit: "none",
     location: {
         x: 0,
         y: 0
@@ -419,7 +419,7 @@ const moon5 = {
     speed: 30,
     angle: 270,
     color: "lightgrey",
-    hit: false,
+    hit: "none",
     location: {
         x: 0,
         y: 0

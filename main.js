@@ -222,14 +222,40 @@ function handleRestartButtonClick() {
 
 function updateScore() {
     let scored = 0;
-    let q1 = document.getElementById('q1');
-    let q2 = document.getElementById('q2');
-    if (q1.checked == ship.planetHit.question[0].q1) {
-        scored += 50;
+    let q1r0 = document.getElementById('q1r0').checked;
+    let q1r1 = document.getElementById('q1r1').checked;
+    let q1r2 = document.getElementById('q1r2').checked;
+    let q2r0 = document.getElementById('q2r0').checked;
+    let q2r1 = document.getElementById('q2r1').checked;
+    let q2r2 = document.getElementById('q2r2').checked;
+
+    if (q1r0 == false) {
+        if (ship.planetHit.question[0].q1 == true && q1r1 == true) {
+            scored += 50;
+        }
+        if (ship.planetHit.question[0].q1 == false && q1r2 == true) {
+            scored += 50;
+        }
     }
-    if (q2.checked == ship.planetHit.question[1].q2) {
-        scored += 50;
+    if (q2r0 == false) {
+        if (ship.planetHit.question[1].q2 == true && q2r1 == true) {
+            scored += 50;
+        }
+        if (ship.planetHit.question[1].q2 == false && q2r2 == true) {
+            scored += 50;
+        }
     }
+
+    console.log(q1r1, ship.planetHit.question[0].q1)
+    console.log(q1r1 == ship.planetHit.question[0].q1)
+    console.log(q1r2, ship.planetHit.question[0].q1)
+    console.log(q1r2 == ship.planetHit.question[0].q1)
+    // if (q1.checked == ship.planetHit.question[0].q1) {
+    //     scored += 50;
+    // }
+    // if (q2.checked == ship.planetHit.question[1].q2) {
+    //     scored += 50;
+    // }
     ship.score += scored;
     ship.objectsHit.push(ship.planetHit.name);
 }
@@ -284,21 +310,84 @@ function setInfoBoxContent() {
     divider2.textContent = "------"
     ul.appendChild(divider2);
 
+
+    ///this is the new radio buttons
+
+
     const q1label = document.createElement('label');
-    q1label.textContent = ship.planetHit.question[0].text;
-    const q1 = document.createElement('input')
-    q1.type = 'checkbox';
-    q1.id = 'q1';
-    q1label.appendChild(q1);
+    const q1span = document.createElement('span');
+    q1label.textContent = ship.planetHit.question[0].text + "  ";
+    const q1r0 = document.createElement('input')
+    q1r0.type = 'radio';
+    q1r0.id = 'q1r0';
+    q1r0.name = '1';
+    q1r0.checked = true;
+    q1r0.style = ("display:none");
+    q1span.appendChild(q1r0);
+
+
+    const q1r1 = document.createElement('input')
+    q1r1.type = 'radio';
+    q1r1.id = 'q1r1';
+    q1r1.name = '1';
+    q1span.appendChild(q1r1);
+    const q1r1Text = document.createElement('span');
+    q1r1Text.textContent = " true   ";
+    q1span.appendChild(q1r1Text);
+
+
+    const q1r2 = document.createElement('input');
+    q1r2.type = 'radio';
+    q1r2.id = 'q1r2';
+    q1r2.name = '1'
+    q1span.appendChild(q1r2);
+
+    const q1r2Text = document.createElement('span');
+    q1r2Text.textContent = " false";
+    q1span.appendChild(q1r2Text);
+
+    q1label.appendChild(q1span)
     ul.appendChild(q1label);
 
+
     const q2label = document.createElement('p');
-    q2label.textContent = ship.planetHit.question[1].text;
-    const q2 = document.createElement('input');
-    q2.type = 'checkbox';
-    q2.id = 'q2';
-    q2label.appendChild(q2);
+    const q2span = document.createElement('span');
+    q2label.textContent = ship.planetHit.question[1].text + "  ";
+    const q2r0 = document.createElement('input')
+    q2r0.type = 'radio';
+    q2r0.id = 'q2r0';
+    q2r0.name = '2';
+    q2r0.checked = true;
+    q2r0.style = ("display:none");
+    q2span.appendChild(q2r0);
+
+
+    const q2r1 = document.createElement('input')
+    q2r1.type = 'radio';
+    q2r1.id = 'q2r1';
+    q2r1.name = '2';
+    q2span.appendChild(q2r1);
+    const q2r1Text = document.createElement('span');
+    q2r1Text.textContent = " true  ";
+    q2span.appendChild(q2r1Text);
+
+
+    const q2r2 = document.createElement('input');
+    q2r2.type = 'radio';
+    q2r2.id = 'q2r2';
+    q2r2.name = '2'
+    q2span.appendChild(q2r2);
+    const q2r2Text = document.createElement('span');
+    q2r2Text.textContent = " false";
+    q2span.appendChild(q2r2Text);
+
+    q2label.appendChild(q2span)
     ul.appendChild(q2label);
+
+
+    const breakBeforeButton = document.createElement('p');
+    breakBeforeButton.textContent = " - ";
+    infoBox.appendChild(breakBeforeButton);
 
     const resumeButton = document.createElement('button');
     resumeButton.textContent = "Resume";
@@ -306,6 +395,13 @@ function setInfoBoxContent() {
     resumeButton.setAttribute("type", "Button");
     resumeButton.setAttribute("onclick", 'handleResumeButtonClick()')
     infoBox.appendChild(resumeButton);
+
+    const breakAfterButton = document.createElement('p');
+    breakAfterButton.textContent = " - ";
+    infoBox.appendChild(breakAfterButton);
+
+    // console.log(q1r0.checked, q1r1.checked, q1r2.checked)
+
     ship.playSound = false;
 }
 
@@ -468,6 +564,9 @@ function makeMoon(time, ctx,
     if (planetInfo.moons[moonNum].hit == true) {
         ctx.fillStyle = "red";
     }
+    if (planetInfo.moons[moonNum].hit == false) {
+        ctx.fillStyle = "green";
+    }
     ctx.font = "10px serif";
     ctx.fillText(
         " " + planetInfo.moons[moonNum].name,
@@ -523,6 +622,9 @@ function makePlanet(time, ctx, planetInfo) {
     ctx.fillStyle = "grey";
     if (planetInfo.hit == true) {
         ctx.fillStyle = "red";
+    }
+    if (planetInfo.hit == false) {
+        ctx.fillStyle = "green"
     }
     ctx.fillText(
         " " + planetInfo.name,

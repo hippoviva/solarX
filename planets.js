@@ -288,7 +288,7 @@ const uranus = {
             surface: "solid and rocky",
             water: "None",
             magnetoshere: "None",
-            hit: false,
+            hit: "none",
             location: {
                 x: 0,
                 y: 0
@@ -309,7 +309,7 @@ const uranus = {
             surface: "solid and rocky",
             water: "None",
             magnetoshere: "None",
-            hit: false,
+            hit: "none",
             location: {
                 x: 0,
                 y: 0
@@ -330,7 +330,7 @@ const uranus = {
             surface: "solid and rocky",
             water: "None",
             magnetoshere: "None",
-            hit: false,
+            hit: "none",
             location: {
                 x: 0,
                 y: 0
@@ -351,7 +351,7 @@ const uranus = {
             surface: "solid and rocky",
             water: "None",
             magnetoshere: "None",
-            hit: false,
+            hit: "none",
             location: {
                 x: 0,
                 y: 0
@@ -411,7 +411,7 @@ const neptune = {
             surface: "solid and rocky",
             water: "None",
             magnetoshere: "None",
-            hit: false,
+            hit: "none",
             location: {
                 x: 0,
                 y: 0
@@ -432,7 +432,7 @@ const neptune = {
             surface: "solid and rocky",
             water: "None",
             magnetoshere: "None",
-            hit: false,
+            hit: "none",
             location: {
                 x: 0,
                 y: 0
