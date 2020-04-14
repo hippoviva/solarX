@@ -304,7 +304,7 @@ function setInfoBoxContent() {
     divider.textContent = "*   *   *  *   *"
     ul.appendChild(divider);
     const instructions = document.createElement("p");
-    instructions.textContent = "Check if is a reason life would exist here"
+    instructions.textContent = 'Check true if it would allow for life to exist here';
     ul.appendChild(instructions);
     const divider2 = document.createElement("p");
     divider2.textContent = "------"
