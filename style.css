@@ -26,6 +26,11 @@ body {
   color: red;
 }
 
+.loadingText {
+  color: white;
+  position: relative;
+}
+
 .container {
   width: 900px;
   height: 700px;
@@ -44,8 +49,8 @@ body {
 
 .infoBox {
   background-color: black;
-
   position: absolute;
+  padding: .5rem;
   height: auto;
   width: auto;
   top: 20%;
@@ -54,6 +59,25 @@ body {
   /* modified */
   box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
   border-radius: 15%;
+  text-align: center;
+  z-index: 30;
+  color: white;
+  display: none;
+}
+
+.loadingBox {
+  background-color: black;
+  position: absolute;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  top: 40%;
+  /* modified */
+  left: 40%;
+  /* modified */
+  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
+  border-radius: 15%;
+  font-size: 3rem;
   text-align: center;
   z-index: 30;
   color: white;

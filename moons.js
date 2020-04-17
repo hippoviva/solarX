@@ -96,8 +96,8 @@ const deimos = {
         y: 0
     },
     question: [{
-            q1: false,
-            text: "No magnetosphere is present."
+            q1: true,
+            text: "rocky solid surface"
         },
         {
             q2: false,
@@ -164,8 +164,8 @@ const europa = {
     mass: ".01 earth mass",
     atmosphere: "None",
     cosmic: "Atmosphere too thin to reduce cosmic rays",
-    surface: "solid and rocky",
-    water: "None",
+    surface: "frozen ice surface",
+    water: "frozen ice present",
     magnetosphere: "None",
     hit: false,
     location: {
@@ -177,8 +177,8 @@ const europa = {
             text: "How far it is from the Sun."
         },
         {
-            q2: false,
-            text: "No water present."
+            q2: true,
+            text: "frozen water present."
         },
         {
             q3: true,
@@ -212,7 +212,7 @@ const ganymede = {
         y: 0
     },
     question: [{
-            q1: false,
+            q1: true,
             text: "The solid and rocky surface."
         },
         {
@@ -365,7 +365,7 @@ const dione = {
     },
     question: [{
             q1: false,
-            text: "The temperature of the moon."
+            text: "How far it is from the Sun"
         },
         {
             q2: false,

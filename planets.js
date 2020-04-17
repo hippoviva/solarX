@@ -1,6 +1,5 @@
 const sizeReducer = .5
 
-
 const mercury = {
     name: "Mercury",
     orbit: 67 - 8,
@@ -262,11 +261,11 @@ const uranus = {
     imageSource: "uranus-transparent.png",
     temp: "-320F",
     mass: "15 Earth mass",
-    atmosphere: "Contains Carbon Dioxide and Nitrogen, only 1% as thick as Earth's",
-    cosmic: "Not thick enough to reduce cosmic rays",
-    surface: "Solid and rocky",
-    water: "Present but frozen below surface.",
-    magnetosphere: "No magnetosphere to prevent solar radiation",
+    atmosphere: "Contains Hydrogen, Helium and Methane",
+    cosmic: "Very thick atmosphere",
+    surface: "Gas giant that has no rocky surface",
+    water: "Possible ice in mantle but not accessible.",
+    magnetosphere: "Magnetosphere opens to solar radiation",
     hit: false,
     location: {
         x: 0,
@@ -359,12 +358,12 @@ const uranus = {
         }
     ],
     question: [{
-            q1: true,
-            text: "The mass of the planet."
+            q1: false,
+            text: "How far it is from the Sun"
         },
         {
             q2: false,
-            text: "Water is not present."
+            text: "Composition of the atmosphere"
         },
         {
             q3: false,
@@ -386,11 +385,11 @@ const neptune = {
     imageSource: "neptune-transparent.png",
     temp: "-330F",
     mass: "17x Earth mass",
-    atmosphere: "Contains Carbon Dioxide and Nitrogen, only 1% as thick as Earth's",
-    cosmic: "Not thick enough to reduce cosmic rays",
-    surface: "Solid and rocky",
-    water: "Present but frozen below surface.",
-    magnetosphere: "No magnetosphere to prevent solar radiation",
+    atmosphere: "Contains Hydrogen, Helium and Methane",
+    cosmic: "Thick enough to reduce cosmic rays",
+    surface: "Gas giant without rocky surface",
+    water: "Water and ammonia ices present in mantle.",
+    magnetosphere: "Strong magnetosphere to prevent solar radiation",
     hit: false,
     location: {
         x: 0,
@@ -440,16 +439,16 @@ const neptune = {
         }
     ],
     question: [{
-            q1: true,
-            text: "Only a trace atmosphere."
+            q1: false,
+            text: "Composition of the surface."
         },
         {
             q2: false,
-            text: "Water is present."
+            text: "Surface temperature"
         },
         {
             q3: false,
-            text: "Nice rocky surface."
+            text: "Gas giant"
         },
         {
             q4: false,
