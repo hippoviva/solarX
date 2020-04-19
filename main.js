@@ -561,10 +561,10 @@ function makeMoon(time, ctx, planetInfo, moonNum) {
 
     ctx.fillStyle = "grey";
     if (planetInfo.moons[moonNum].hit == true) {
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "rgba(255,0,0,0.5)";
     }
     if (planetInfo.moons[moonNum].hit == false) {
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "rgba(0,255,0,0.7)";
     }
     ctx.font = "10px serif";
     ctx.fillText(
@@ -620,10 +620,10 @@ function makePlanet(time, ctx, planetInfo) {
     orbitLine2(ctx, planetInfo);
     ctx.fillStyle = "grey";
     if (planetInfo.hit == true) {
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "rgba(255,0,0,0.5)";
     }
     if (planetInfo.hit == false) {
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "rgba(0,255,0,0.7)";
     }
     ctx.fillText(
         " " + planetInfo.name,
