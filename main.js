@@ -9,6 +9,7 @@ let offsetAmount = {
     x: 0,
     y: 0,
 };
+let asteroidArray = [];
 
 const fireBooster = new Audio("sounds/hollowhiss.wav"); // buffers automatically when created
 const landingSound = new Audio("sounds/grass.wav"); // buffers automatically when created
@@ -58,6 +59,7 @@ function preload() {
         uranus,
         neptune,
         sun,
+        ceres
     ];
     for (let i = 0; i < listOfImageObjects.length; i++) {
         listOfImageObjects[i].image = new Image(150, 150);
@@ -85,7 +87,7 @@ function loadAtStart() {
         listOfImageObjects[i].image.src =
             "imagesfiles/" + listOfImageObjects[i].imageSource;
     }
-    return "done";
+    //return "done";
 }
 
 preload();
@@ -97,7 +99,6 @@ window.onload = (event) => {
 
 function resetEverything() {
     makeObjectsInSpaceArray();
-    //resetShip();
     for (let i = 0; i < objectsInSpace.length; i++) {
         objectsInSpace[i].hit = false;
     }
@@ -133,6 +134,7 @@ function makeObjectsInSpaceArray() {
         calisto,
         enceladus,
         titan,
+        ceres,
     ];
     objectsInSpace.length = 0; // Clear contents
     objectsInSpace.push.apply(objectsInSpace, listOfObjectsInSpace);
@@ -164,8 +166,8 @@ function draw() {
     text(ctx);
     offsetView();
     let time = new Date();
-    //ctx.imageSmoothingEnabled = false;
     makePlanets(ctx, time);
+
     makeShip(ctx);
     checkForWinner();
     detectCollisions();
@@ -213,7 +215,6 @@ function handleResumeButtonClick() {
         checkForButtonTrigger();
     } else {
         updateScore();
-        //checkAnswers();
         resume1.textContent = "Resume";
     }
 }
@@ -303,7 +304,7 @@ function setInfoBoxContent() {
     ul.appendChild(divider);
     const instructions = document.createElement("p");
     instructions.textContent =
-        "Check true if it would allow for life to exist here";
+        "Check good if it would allow for life to exist here";
     ul.appendChild(instructions);
     const divider2 = document.createElement("p");
     divider2.textContent = "------";
@@ -331,7 +332,7 @@ function setInfoBoxContent() {
     q1r1.name = "1";
     q1span.appendChild(q1r1);
     const q1r1Text = document.createElement("span");
-    q1r1Text.textContent = " true   ";
+    q1r1Text.textContent = " good   ";
     q1span.appendChild(q1r1Text);
 
     const q1r2 = document.createElement("input");
@@ -341,7 +342,7 @@ function setInfoBoxContent() {
     q1span.appendChild(q1r2);
 
     const q1r2Text = document.createElement("span");
-    q1r2Text.textContent = " false";
+    q1r2Text.textContent = " bad";
     q1span.appendChild(q1r2Text);
 
     q1label.appendChild(q1span);
@@ -368,7 +369,7 @@ function setInfoBoxContent() {
     q2span.appendChild(q2r1);
 
     const q2r1Text = document.createElement("span");
-    q2r1Text.textContent = " true  ";
+    q2r1Text.textContent = " good  ";
     q2span.appendChild(q2r1Text);
 
     const q2r2 = document.createElement("input");
@@ -378,7 +379,7 @@ function setInfoBoxContent() {
     q2span.appendChild(q2r2);
 
     const q2r2Text = document.createElement("span");
-    q2r2Text.textContent = " false";
+    q2r2Text.textContent = " bad";
     q2span.appendChild(q2r2Text);
 
     q2label.appendChild(q2span);
@@ -387,6 +388,8 @@ function setInfoBoxContent() {
     const breakBeforeButton = document.createElement("p");
     breakBeforeButton.textContent = " - ";
     infoBox.appendChild(breakBeforeButton);
+
+    // check answers and resume button
 
     const resumeButton = document.createElement("button");
     resumeButton.textContent = "Check Answers";
@@ -419,7 +422,7 @@ function setYouWonBoxContent(infoBox) {
     infoBox.appendChild(restartButton);
     ship.playSound = true;
 }
-//On this function objInSpace is an object reference to the object hit.
+//In this function objInSpace is an object reference to the object hit.
 function detectCollisions() {
     for (let i = 0; i < objectsInSpace.length; i++) {
         const objInSpace = objectsInSpace[i];
@@ -430,7 +433,6 @@ function detectCollisions() {
             distance < objInSpace.size + 10 &&
             ship.objectsHit.indexOf(objInSpace.name) < 0
         ) {
-            //
             buttonTrigger = "resume";
             ship.velocityx = ship.velocityx / 2;
             ship.velocityy = ship.velocityy / 2;
@@ -552,7 +554,6 @@ function startDraw(ctx) {
     ctx.clearRect(0, 0, canvasWidth, canvasWidth); // clear canvas
     ctx.fillStyle = "rgba(200, 200, 200, .4)";
     ctx.strokeStyle = "rgba(0, 153, 255, 0.4)";
-    //  ctx.fillRect(0, 0, 700, 700);
 }
 
 function makeMoon(time, ctx, planetInfo, moonNum) {
@@ -694,5 +695,67 @@ function makePlanets(ctx, time) {
     makePlanet(time, ctx, saturn);
     makePlanet(time, ctx, uranus);
     makePlanet(time, ctx, neptune);
+    makePlanet(time, ctx, ceres);
+    drawAsteroids(ctx, time);
+    //  ;
 }
-//init();
+
+function makeAllAsteroids(planetInfo) {
+    for (let i = 0; i < planetInfo.howMany; i++) {
+        let randomAngle = Math.floor(Math.random() * 360)
+        let randomSpeed = Math.floor(Math.random() * 10) - 5 + planetInfo.speed
+        let randomOrbit = Math.floor(Math.random() * 40) - 20 + ceres.orbit
+        let k = {
+            "name": ('asteroid' + i),
+            "location": {
+                "x": 0,
+                "y": 0
+            },
+            "size": planetInfo.size,
+            "speed": randomSpeed,
+            "orbit": randomOrbit,
+            "angle": randomAngle,
+            "color": planetInfo.color
+        }
+        asteroidArray.push(k)
+    }
+}
+
+makeAllAsteroids(asteroids);
+
+function drawAsteroids(ctx, time) {
+    for (let i = 0; i < asteroidArray.length; i++) {
+        makeAsteroids(time, ctx, asteroidArray[i])
+    }
+}
+
+
+function makeAsteroids(time, ctx, planetInfo) {
+    moveAsteroids(planetInfo, time);
+    ctx.fillStyle = planetInfo.color;
+    ctx.beginPath();
+    ctx.ellipse(
+        planetInfo.location.x,
+        planetInfo.location.y,
+        planetInfo.size,
+        planetInfo.size,
+        Math.PI * 2,
+        0,
+        Math.PI * 2
+    );
+    ctx.fill();
+}
+
+function moveAsteroids(planetInfo, time) {
+    let timeBuffer = (time.getMilliseconds() + 1) / (time.getMilliseconds() + 1);
+    let middle = {
+        x: canvasWidth / 2 + offsetAmount.x,
+        y: canvasHeight / 2 + offsetAmount.y,
+    };
+    planetInfo.angle += 0.02 * timeBuffer * planetInfo.speed;
+    if (planetInfo.angle == 360) {
+        planetInfo.angle = 0;
+    }
+    planetInfo.location.x = Math.sin(planetInfo.angle * (Math.PI / 180)) * planetInfo.orbit + middle.x;
+    planetInfo.location.y = Math.cos(planetInfo.angle * (Math.PI / 180)) * -planetInfo.orbit + middle.y;
+}

@@ -309,7 +309,7 @@ const titan = {
     name: "Titan",
     size: 4,
     orbit: 75,
-    speed: 20,
+    speed: 10,
     angle: 10,
     color: "lightyellow",
     imageSource: "titan-transparent.gif",
@@ -399,7 +399,7 @@ const moon4 = {
         },
         {
             q2: false,
-            text: "No water present."
+            text: "No water is present."
         },
         {
             q3: true,
@@ -441,4 +441,130 @@ const moon5 = {
             text: "How far it is from the Sun."
         }
     ]
+}
+const miranda = {
+    name: "Miranda",
+    size: 1,
+    orbit: 40,
+    speed: 30,
+    angle: 0,
+    color: "white",
+    imageSource: "Deimos.jpg",
+    temp: "- 233F",
+    mass: ".001 earth mass",
+    atmosphere: "None",
+    cosmic: "Atmosphere too thin to reduce cosmic rays",
+    surface: "solid and rocky",
+    water: "None",
+    magnetoshere: "None",
+    hit: "none",
+    location: {
+        x: 0,
+        y: 0
+    }
+}
+const ariel = {
+    name: "Ariel",
+    size: 2,
+    orbit: 75,
+    speed: 20,
+    angle: 0,
+    color: "lightblue",
+    imageSource: "Deimos.jpg",
+    temp: "- 233F",
+    mass: ".001 earth mass",
+    atmosphere: "None",
+    cosmic: "Atmosphere too thin to reduce cosmic rays",
+    surface: "solid and rocky",
+    water: "None",
+    magnetoshere: "None",
+    hit: "none",
+    location: {
+        x: 0,
+        y: 0
+    }
+}
+const umbriel = {
+    name: "Umbriel",
+    size: 3,
+    orbit: 95,
+    speed: 10,
+    angle: 0,
+    color: "lightgrey",
+    imageSource: "Deimos.jpg",
+    temp: "- 233F",
+    mass: ".001 earth mass",
+    atmosphere: "None",
+    cosmic: "Atmosphere too thin to reduce cosmic rays",
+    surface: "solid and rocky",
+    water: "None",
+    magnetoshere: "None",
+    hit: "none",
+    location: {
+        x: 0,
+        y: 0
+    }
+}
+const titamia = {
+    name: "Titamia",
+    size: 1,
+    orbit: 105,
+    speed: 8,
+    angle: 0,
+    color: "lightgreen",
+    imageSource: "Deimos.jpg",
+    temp: "- 233F",
+    mass: ".001 earth mass",
+    atmosphere: "None",
+    cosmic: "Atmosphere too thin to reduce cosmic rays",
+    surface: "solid and rocky",
+    water: "None",
+    magnetoshere: "None",
+    hit: "none",
+    location: {
+        x: 0,
+        y: 0
+    }
+}
+const proteus = {
+    name: "Proteus",
+    size: 2,
+    orbit: 40,
+    speed: 30,
+    angle: 0,
+    color: "white",
+    imageSource: "Deimos.jpg",
+    temp: "- 233F",
+    mass: ".001 earth mass",
+    atmosphere: "None",
+    cosmic: "Atmosphere too thin to reduce cosmic rays",
+    surface: "solid and rocky",
+    water: "None",
+    magnetoshere: "None",
+    hit: "none",
+    location: {
+        x: 0,
+        y: 0
+    }
+}
+const triton = {
+    name: "Triton",
+    size: 3,
+    orbit: 75,
+    speed: 20,
+    angle: 0,
+    color: "lightblue",
+    imageSource: "Deimos.jpg",
+    temp: "- 233F",
+    mass: ".001 earth mass",
+    atmosphere: "None",
+    cosmic: "Atmosphere too thin to reduce cosmic rays",
+    surface: "solid and rocky",
+    water: "None",
+    magnetoshere: "None",
+    hit: "none",
+    location: {
+        x: 0,
+        y: 0
+    }
 }

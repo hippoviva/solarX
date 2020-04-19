@@ -195,7 +195,7 @@ const jupiter = {
     },
     moons: [io, europa, ganymede, calisto],
     question: [{
-            q1: true,
+            q1: false,
             text: "The mass of the planet."
         },
         {
@@ -271,92 +271,7 @@ const uranus = {
         x: 0,
         y: 0
     },
-    moons: [{
-            name: "",
-            displayName: "Mrandad",
-            size: 1,
-            orbit: 40,
-            speed: 30,
-            angle: 0,
-            color: "white",
-            imageSource: "Deimos.jpg",
-            temp: "- 233F",
-            mass: ".001 earth mass",
-            atmosphere: "None",
-            cosmic: "Atmosphere too thin to reduce cosmic rays",
-            surface: "solid and rocky",
-            water: "None",
-            magnetoshere: "None",
-            hit: "none",
-            location: {
-                x: 0,
-                y: 0
-            }
-        },
-        {
-            name: "Ariel",
-            size: 2,
-            orbit: 75,
-            speed: 20,
-            angle: 0,
-            color: "lightblue",
-            imageSource: "Deimos.jpg",
-            temp: "- 233F",
-            mass: ".001 earth mass",
-            atmosphere: "None",
-            cosmic: "Atmosphere too thin to reduce cosmic rays",
-            surface: "solid and rocky",
-            water: "None",
-            magnetoshere: "None",
-            hit: "none",
-            location: {
-                x: 0,
-                y: 0
-            }
-        },
-        {
-            name: "Umbriel",
-            size: 3,
-            orbit: 95,
-            speed: 10,
-            angle: 0,
-            color: "lightgrey",
-            imageSource: "Deimos.jpg",
-            temp: "- 233F",
-            mass: ".001 earth mass",
-            atmosphere: "None",
-            cosmic: "Atmosphere too thin to reduce cosmic rays",
-            surface: "solid and rocky",
-            water: "None",
-            magnetoshere: "None",
-            hit: "none",
-            location: {
-                x: 0,
-                y: 0
-            }
-        },
-        {
-            name: "Titamia",
-            size: 1,
-            orbit: 105,
-            speed: 8,
-            angle: 0,
-            color: "lightgreen",
-            imageSource: "Deimos.jpg",
-            temp: "- 233F",
-            mass: ".001 earth mass",
-            atmosphere: "None",
-            cosmic: "Atmosphere too thin to reduce cosmic rays",
-            surface: "solid and rocky",
-            water: "None",
-            magnetoshere: "None",
-            hit: "none",
-            location: {
-                x: 0,
-                y: 0
-            }
-        }
-    ],
+    moons: [miranda, ariel, umbriel, titamia],
     question: [{
             q1: false,
             text: "How far it is from the Sun"
@@ -372,6 +287,48 @@ const uranus = {
         {
             q4: false,
             text: "The strength of the magnetosphere."
+        }
+    ]
+};
+
+const ceres = {
+    name: "Ceres",
+    orbit: 270,
+    size: 6 * sizeReducer,
+    speed: 5,
+    angle: 90,
+    color: "lightgreen",
+    imageSource: "ceres-transparent.gif",
+    temp: "-120F",
+    mass: "Dwarf Planet .2 Earth mass",
+    atmosphere: "Only a trace or thin atmosphere",
+    cosmic: "Not thick enough to reduce cosmic rays",
+    surface: "Rocky, cratered surface",
+    water: "Water ice present in craters and underground",
+    magnetosphere: "No magnetosphere to prevent solar radiation",
+    hit: false,
+    location: {
+        x: 0,
+        y: 0
+    },
+    moons: [{
+        name: "none"
+    }],
+    question: [{
+            q1: true,
+            text: "Composition of the surface."
+        },
+        {
+            q2: false,
+            text: "Surface temperature"
+        },
+        {
+            q3: false,
+            text: "water ice present"
+        },
+        {
+            q4: false,
+            text: "Too far from the Sun."
         }
     ]
 };
@@ -395,49 +352,47 @@ const neptune = {
         x: 0,
         y: 0
     },
-    moons: [{
-            name: "Proteus",
-            size: 2,
-            orbit: 40,
-            speed: 30,
-            angle: 0,
-            color: "white",
-            imageSource: "Deimos.jpg",
-            temp: "- 233F",
-            mass: ".001 earth mass",
-            atmosphere: "None",
-            cosmic: "Atmosphere too thin to reduce cosmic rays",
-            surface: "solid and rocky",
-            water: "None",
-            magnetoshere: "None",
-            hit: "none",
-            location: {
-                x: 0,
-                y: 0
-            }
+    moons: [proteus, triton],
+    question: [{
+            q1: false,
+            text: "Composition of the surface."
         },
         {
-            name: "Triton",
-            size: 3,
-            orbit: 75,
-            speed: 20,
-            angle: 0,
-            color: "lightblue",
-            imageSource: "Deimos.jpg",
-            temp: "- 233F",
-            mass: ".001 earth mass",
-            atmosphere: "None",
-            cosmic: "Atmosphere too thin to reduce cosmic rays",
-            surface: "solid and rocky",
-            water: "None",
-            magnetoshere: "None",
-            hit: "none",
-            location: {
-                x: 0,
-                y: 0
-            }
+            q2: false,
+            text: "Surface temperature"
+        },
+        {
+            q3: false,
+            text: "Gas giant"
+        },
+        {
+            q4: false,
+            text: "Too far from the Sun."
         }
-    ],
+    ]
+};
+const asteroids = {
+    name: "Asteroids",
+    orbit: 200,
+    size: 1,
+    speed: 5,
+    howMany: 300,
+    //angle: 0,
+    color: "grey",
+    //imageSource: "",
+    temp: "-330F",
+    mass: ".0001 Earth mass",
+    atmosphere: "None",
+    cosmic: "Too thin to reduce cosmic rays",
+    surface: "Rocky",
+    water: "No water",
+    magnetosphere: "No magnetosphere",
+    hit: false,
+    location: {
+        //   x: 0,
+        //   y: 0
+    },
+    moons: ["none"],
     question: [{
             q1: false,
             text: "Composition of the surface."
