@@ -85,7 +85,7 @@ function setInfoBoxContent() {
     ul.appendChild(divider);
     const instructions = document.createElement("p");
     instructions.textContent =
-        "Check good if it would allow for life to exist here";
+        "Select good if it would allow for life to exist here";
     ul.appendChild(instructions);
     const divider2 = document.createElement("p");
     divider2.textContent = "------";

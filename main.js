@@ -66,7 +66,7 @@ function preload() {
         listOfImageObjects[i].image.src =
             "imagesfiles/" + listOfImageObjects[i].imageSource;
     }
-    mouseloc();
+    userEvents();
     resetEverything();
     makeAllAsteroids(asteroids);
 
@@ -141,7 +141,7 @@ function makeObjectsInSpaceArray() {
     objectsInSpace.push.apply(objectsInSpace, listOfObjectsInSpace);
 }
 
-function mouseloc() {
+function userEvents() {
     document.addEventListener("keydown", logKey);
     let canvas = document.getElementById("canvas");
 
@@ -156,10 +156,10 @@ function mouseloc() {
     );
 }
 
-function init() {
-    resetEverything();
-    mouseloc();
-}
+//function init() {
+//    resetEverything();
+//    userEvents();
+//}
 
 function draw() {
     let ctx = document.getElementById("canvas").getContext("2d");
@@ -189,7 +189,7 @@ function checkForButtonTrigger() {
 }
 
 function checkForWinner() {
-    if (objectsInSpace.length < ship.winnerAmount) {
+    if (objectsInSpace.length < ship.winnerAmount || ship.score > 1000) {
         ship.winner = true;
     }
 }
@@ -552,7 +552,7 @@ function drawAsteroids(ctx, time) {
 
 
 function makeAsteroids(time, ctx, planetInfo) {
-    moveAsteroids(planetInfo, time);
+    movePlanet(planetInfo, time);
     ctx.fillStyle = planetInfo.color;
     ctx.beginPath();
     ctx.ellipse(
@@ -567,16 +567,16 @@ function makeAsteroids(time, ctx, planetInfo) {
     ctx.fill();
 }
 
-function moveAsteroids(planetInfo, time) {
-    let timeBuffer = (time.getMilliseconds() + 1) / (time.getMilliseconds() + 1);
-    let middle = {
-        x: canvasWidth / 2 + offsetAmount.x,
-        y: canvasHeight / 2 + offsetAmount.y,
-    };
-    planetInfo.angle += 0.02 * timeBuffer * planetInfo.speed;
-    if (planetInfo.angle == 360) {
-        planetInfo.angle = 0;
-    }
-    planetInfo.location.x = Math.sin(planetInfo.angle * (Math.PI / 180)) * planetInfo.orbit + middle.x;
-    planetInfo.location.y = Math.cos(planetInfo.angle * (Math.PI / 180)) * -planetInfo.orbit + middle.y;
-}
+//function moveAsteroids(planetInfo, time) {
+//    let timeBuffer = (time.getMilliseconds() + 1) / (time.getMilliseconds() + 1);
+//    let middle = {
+//        x: canvasWidth / 2 + offsetAmount.x,
+//        y: canvasHeight / 2 + offsetAmount.y,
+//    };
+//    planetInfo.angle += 0.02 * timeBuffer * planetInfo.speed;
+//    if (planetInfo.angle == 360) {
+//        planetInfo.angle = 0;
+//    }
+//    planetInfo.location.x = Math.sin(planetInfo.angle * (Math.PI / 180)) * planetInfo.orbit + middle.x;
+//    planetInfo.location.y = Math.cos(planetInfo.angle * (Math.PI / 180)) * -planetInfo.orbit + middle.y;
+//}
