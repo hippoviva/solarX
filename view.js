@@ -31,7 +31,7 @@ function makeWelcomeBoxText() {
 
 
     let text1 = document.createElement("p")
-    text1.textContent = "Turmoil has set upon the solar system as Coach Nic 'Poe' Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts.  He and his commanders, Princess Robin, Christina 'Rey' Majeske and Hans Smith are there to help you, just send them an intersteallar message";
+    text1.textContent = "Turmoil has set upon the solar system as Coach Nic 'Poe' Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts.  He and his commanders, Princess Robin, Christina 'Rey' Majeske and Hans Smith are there to help you, just send them an intersteallar message.";
     let text2 = document.createElement("p");
     text2.textContent = "You will pilot your spacecraft to each object in the solar system that has a green title."
     let text3 = document.createElement("p");
