@@ -21,6 +21,7 @@ function makeWelcomeBoxText() {
     subtitle.id = "subtitle"
     let breaktext = document.createElement("br")
     let breaktext1 = document.createElement("br")
+    let breaktext101 = document.createElement("br")
     let breaktext2 = document.createElement("br")
     let breaktext3 = document.createElement("br")
     let breaktext4 = document.createElement("br")
@@ -31,7 +32,9 @@ function makeWelcomeBoxText() {
 
 
     let text1 = document.createElement("p")
-    text1.textContent = "Turmoil has set upon the solar system as Coach Nic 'Poe' Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts.  He and his commanders, Princess Robin, Christina 'Rey' Majeske and Hans Smith are there to help you, just send them an intersteallar message.";
+    text1.textContent = "Turmoil has set upon the solar system as Coach Nic 'Poe' Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts. "
+    const text101 = document.createElement("p");
+    text101.textContent = "He and his commanders, Princess Robin, Christina 'Rey' Majeske and Hans Smith are there to help you, just send them an intersteallar message.";
     let text2 = document.createElement("p");
     text2.textContent = "You will pilot your spacecraft to each object in the solar system that has a green title."
     let text3 = document.createElement("p");
@@ -54,6 +57,8 @@ function makeWelcomeBoxText() {
     content1.appendChild(subtitle);
     content1.appendChild(breaktext1);
     content1.appendChild(text1);
+    content1.appendChild(breaktext101);
+    content1.appendChild(text101);
     content1.appendChild(breaktext2);
     content1.appendChild(text2);
     content1.appendChild(breaktext3);
