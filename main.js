@@ -37,14 +37,6 @@ let ship = {
 const rocketNoFlame = new Image(200, 200);
 rocketNoFlame.src = "imagesfiles/rocketNoFlame.png";
 
-function makeLoadingText() {
-    let loadingBox = document.getElementById("loadingBox");
-    loadingMessageText = document.createElement("p");
-    loadingMessageText.textContent = "Loading ...."
-    loadingBox.appendChild(loadingMessageText)
-    loadingBox.style.display = "inline-block";
-
-}
 
 
 function preload() {
@@ -69,7 +61,6 @@ function preload() {
     userEvents();
     resetEverything();
     makeAllAsteroids(asteroids);
-
 }
 
 function loadAtStart() {
@@ -94,9 +85,23 @@ function loadAtStart() {
 preload();
 window.onload = (event) => {
     document.getElementById("loadingBox").style.display = "none";
-    window.requestAnimationFrame(draw)
+    makeWelcomeBoxView();
     loadAtStart();
 };
+
+function makeWelcomeBoxView() {
+    buttonTrigger = "start"
+    makeWelcomeBoxText();
+
+}
+
+function handleStartButtonClick() {
+    document.getElementById("welcomeBox").style.display = "none";
+    buttonTrigger = false;
+    window.requestAnimationFrame(draw)
+
+}
+
 
 function resetEverything() {
     makeObjectsInSpaceArray();
@@ -189,7 +194,7 @@ function checkForButtonTrigger() {
 }
 
 function checkForWinner() {
-    if (objectsInSpace.length < ship.winnerAmount || ship.score > 1000) {
+    if (objectsInSpace.length < ship.winnerAmount || ship.score > 1400) {
         ship.winner = true;
     }
 }
@@ -360,8 +365,13 @@ function logKey(logKey) {
         boost(ship);
     }
     if (logKey.keyCode == 13 && buttonTrigger == "resume") {
-        buttonTrigger == false;
+        //   buttonTrigger == false;
         handleResumeButtonClick();
+    }
+    if (logKey.keyCode == 13 && buttonTrigger == "start") {
+
+        //   buttonTrigger == false;
+        handleStartButtonClick();
     }
 }
 

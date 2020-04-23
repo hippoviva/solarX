@@ -1,3 +1,92 @@
+function makeLoadingText() {
+    let loadingBox = document.getElementById("loadingBox");
+    loadingMessageText = document.createElement("p");
+    loadingMessageText.textContent = "Loading ...."
+    loadingBox.appendChild(loadingMessageText)
+    loadingBox.style.display = "inline-block";
+
+}
+
+function makeWelcomeBoxText() {
+    let welcomeBox = document.getElementById("welcomeBox");
+    let board = document.createElement("div");
+    board.id = "board";
+    let content1 = document.createElement("div");
+    content1.id = "content1"
+    let title = document.createElement("p");
+    title.textContent = "Episode I";
+    title.id = "title1"
+    let subtitle = document.createElement("p");
+    subtitle.textContent = "Solar Explorer";
+    subtitle.id = "subtitle"
+    let breaktext = document.createElement("br")
+    let breaktext1 = document.createElement("br")
+    let breaktext2 = document.createElement("br")
+    let breaktext3 = document.createElement("br")
+    let breaktext4 = document.createElement("br")
+    let breaktext5 = document.createElement("br")
+    let breaktext6 = document.createElement("br")
+    let breaktext7 = document.createElement("br")
+    let breaktext8 = document.createElement("br")
+
+
+    let text1 = document.createElement("p")
+    text1.textContent = "Turmoil has set upon the solar system as Coach Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts."
+    let text2 = document.createElement("p");
+    text2.textContent = "You will pilot your spacecraft to each object in the solar system that has a green title."
+    let text3 = document.createElement("p");
+    text3.textContent = "Once there you will analyze the data and answer two questions on whether it has a characteristic that allows for life."
+    let text4 = document.createElement("p");
+    text4.textContent = "Each correct answer will reward you with 50 points.  Reach 1,400 points to complete your mission."
+    let text5 = document.createElement("p");
+    text5.textContent = "Remember, it has to have water, a suitable atmosphere with oxygen, a mass of between .5 and 2 times Earth, a magnetosphere to protect from cosmic rays and a nice rocky surface to build the new outpost."
+    let text6 = document.createElement("p");
+    text6.textContent = "The alliance is counting on you, we know you can do it!!"
+    let text7 = document.createElement("p");
+    text7.textContent = "May the force be with you and ... "
+    let text8 = document.createElement("p");
+    text8.textContent = "Go Bearcats!!"
+    text8.id = "subtitle2";
+
+
+    content1.appendChild(title);
+    content1.appendChild(breaktext);
+    content1.appendChild(subtitle);
+    content1.appendChild(breaktext1);
+    content1.appendChild(text1);
+    content1.appendChild(breaktext2);
+    content1.appendChild(text2);
+    content1.appendChild(breaktext3);
+    content1.appendChild(text3);
+    content1.appendChild(breaktext4);
+    content1.appendChild(text4);
+    content1.appendChild(breaktext5);
+    content1.appendChild(text5);
+    content1.appendChild(breaktext6);
+    content1.appendChild(text6);
+    content1.appendChild(breaktext7);
+    content1.appendChild(text7);
+    content1.appendChild(breaktext8);
+    content1.appendChild(text8);
+
+    board.appendChild(content1);
+
+    const startButton = document.createElement("button");
+    startButton.textContent = "Start";
+    startButton.setAttribute("type", "Button")
+    startButton.id = "startButton";
+    startButton.setAttribute("onclick", "handleStartButtonClick()");
+
+    welcomeBox.appendChild(startButton);
+    welcomeBox.appendChild(board)
+
+    welcomeBox.style.display = "block";
+
+    ship.playSound = true;
+}
+
+
+
 function setYouWonBoxContent(infoBox) {
     //clear the infoBox div
 
@@ -15,6 +104,7 @@ function setYouWonBoxContent(infoBox) {
     const restartButton = document.createElement("button");
     restartButton.textContent = "Restart";
     restartButton.setAttribute("id", "Resart");
+    restartButton.setAttribute("type", "Button");
     restartButton.setAttribute("onclick", "handleRestartButtonClick()");
     infoBox.appendChild(restartButton);
     ship.playSound = true;
