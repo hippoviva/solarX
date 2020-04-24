@@ -42,7 +42,7 @@ function makeWelcomeBoxText() {
     let text4 = document.createElement("p");
     text4.textContent = "Each correct answer will reward you with 50 points.  Reach 1,400 points to complete your mission."
     let text5 = document.createElement("p");
-    text5.textContent = "Remember, it has to have water, a suitable atmosphere with oxygen, a mass of between .5 and 2 times Earth, a magnetosphere to protect from cosmic rays, a 'goldilocks temperature' and a nice rocky surface to build the new outpost."
+    text5.textContent = "Remember, it has to have water, a suitable atmosphere with oxygen, a mass of between .5 and 2 times Earth, a magnetosphere to protect from cosmic rays, a goldilocks temperature, and a nice rocky surface to build the new outpost."
     let text6 = document.createElement("p");
     text6.textContent = "The alliance is counting on you, we know you can do it!!"
     let text7 = document.createElement("p");
