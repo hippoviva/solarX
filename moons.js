@@ -62,7 +62,7 @@ const phobos = {
         },
         {
             q2: false,
-            text: "No water present."
+            text: "The temperature of the surface"
         },
         {
             q3: true,
@@ -217,7 +217,7 @@ const ganymede = {
         },
         {
             q2: false,
-            text: "No water present."
+            text: "How far it is from the Sun."
         },
         {
             q3: true,
@@ -331,7 +331,7 @@ const titan = {
         },
         {
             q2: false,
-            text: "No water present."
+            text: "Temperature of the surface."
         },
         {
             q3: true,

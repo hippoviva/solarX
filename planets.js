@@ -26,15 +26,15 @@ const mercury = {
     }],
     question: [{
             q1: false,
-            text: "The mass of the planet."
+            text: "The atmosphere of the planet"
         },
         {
             q2: false,
-            text: "Water is not present."
+            text: "Temperature of the surface"
         },
         {
-            q3: false,
-            text: "The temperature of the surface."
+            q3: true,
+            text: "The type of surface."
         },
         {
             q4: false,
@@ -73,11 +73,11 @@ const venus = {
         },
         {
             q2: false,
-            text: "Water is not present."
+            text: "The temperature of the surface"
         },
         {
             q3: false,
-            text: "The temperature of the surface."
+            text: "Water is not presentv."
         },
         {
             q4: false,
@@ -200,7 +200,7 @@ const jupiter = {
         },
         {
             q2: false,
-            text: "Water is not present."
+            text: "Does not have rocky surface."
         },
         {
             q3: false,
@@ -239,11 +239,11 @@ const saturn = {
         },
         {
             q2: false,
-            text: "Water is not present."
+            text: "The temperature of the surface"
         },
         {
             q3: false,
-            text: "The temperature of the surface."
+            text: "Water is not present"
         },
         {
             q4: true,
