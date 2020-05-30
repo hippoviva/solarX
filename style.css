@@ -2,7 +2,6 @@ p {
   margin: 0;
   padding: 0;
   color: #FFFF82;
-
 }
 
 body {
@@ -56,9 +55,7 @@ body {
   height: auto;
   width: auto;
   top: 20%;
-  /* modified */
   left: 30%;
-  /* modified */
   box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
   border-radius: 15%;
   text-align: center;
@@ -74,9 +71,7 @@ body {
   height: auto;
   width: auto;
   top: 40%;
-  /* modified */
   left: 40%;
-  /* modified */
   box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
   border-radius: 15%;
   font-size: 3rem;
@@ -87,7 +82,6 @@ body {
 }
 
 #welcomeBox {
-
   position: absolute;
   padding: 1rem;
   height: 70%;
@@ -96,12 +90,6 @@ body {
   /* modified*/
   left: 40%;
   font-size: 4rem;
-
-  /* modified 
-  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
-  border-radius: 15%;
-  text-align: center;
-*/
   z-index: 30;
   color: white;
   display: none;
@@ -116,11 +104,20 @@ body {
   border-color: red;
   border-width: 5px;
   box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
-
   animation: fadein 200s;
+}
 
-
-
+#beginAdventureButton {
+  font-size: 0.8em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px;
+  margin-left: 5;
+  margin-right: 250px;
+  background-color: orange;
+  border-radius: 40%;
+  border-color: red;
+  border-width: 5px;
+  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
 }
 
 #board {
@@ -171,8 +168,6 @@ body {
   text-align: center;
   font-size: 130%;
 }
-
-
 
 @keyframes scroll {
   0% {

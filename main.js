@@ -1,5 +1,5 @@
-let intElemClientWidth = 900; //window.innerWidth;
-let intElemClientHeight = 700; //intElemClientWidth //* .5625;
+let intElemClientWidth = 900; //need to convert to dynamic for responsiveness;
+let intElemClientHeight = 700; //but don't know how to do it.
 let canvasWidth = intElemClientWidth;
 let canvasHeight = intElemClientHeight;
 let keyPressed, mousexy;
@@ -11,6 +11,8 @@ let offsetAmount = {
 };
 let asteroidArray = [];
 
+const gameMusic = new Audio("sounds/game.mp3")
+const introMusic = new Audio("sounds/intro.mp3")
 const fireBooster = new Audio("sounds/hollowhiss.wav"); // buffers automatically when created
 const landingSound = new Audio("sounds/grass.wav"); // buffers automatically when created
 const yay = new Audio("sounds/celebration.wav"); // buffers automatically when created
@@ -37,8 +39,6 @@ let ship = {
 const rocketNoFlame = new Image(200, 200);
 rocketNoFlame.src = "imagesfiles/rocketNoFlame.png";
 
-
-
 function preload() {
     makeLoadingText();
     const listOfImageObjects = [
@@ -63,6 +63,30 @@ function preload() {
     makeAllAsteroids(asteroids);
 }
 
+//--- Start the Program for Here ---
+preload();
+//once loaded preload will be hidden and go to beginAdventureView
+
+window.onload = (event) => {
+    document.getElementById("loadingBox").style.display = "none";
+    //    preload();
+    // makeWelcomeBoxView();
+    beginAdventureView();
+    // loadAtStart();
+
+};
+
+function handleBeginAdventureButtonClick() {
+    document.getElementById("welcomeBox").style.display = "none";
+    buttonTrigger = false;
+    introMusic.loop = true;
+    introMusic.volume = 0.2;
+    introMusic.play();
+    makeWelcomeBoxView()
+    loadAtStart();
+    //  window.requestAnimationFrame(draw)
+}
+
 function loadAtStart() {
     const listOfImageObjects = [
         moon,
@@ -82,26 +106,16 @@ function loadAtStart() {
     }
 }
 
-preload();
-window.onload = (event) => {
-    document.getElementById("loadingBox").style.display = "none";
-    makeWelcomeBoxView();
-    loadAtStart();
-};
-
-function makeWelcomeBoxView() {
-    buttonTrigger = "start"
-    makeWelcomeBoxText();
-
-}
 
 function handleStartButtonClick() {
     document.getElementById("welcomeBox").style.display = "none";
     buttonTrigger = false;
+    introMusic.pause();
+    gameMusic.loop = true;
+    gameMusic.volume = 0.04;
+    gameMusic.play();
     window.requestAnimationFrame(draw)
-
 }
-
 
 function resetEverything() {
     makeObjectsInSpaceArray();
@@ -148,23 +162,20 @@ function makeObjectsInSpaceArray() {
 
 function userEvents() {
     document.addEventListener("keydown", logKey);
-    let canvas = document.getElementById("canvas");
 
-    canvas.addEventListener(
-        "mousemove",
-        function (evt) {
-            let mousePos = getMousePos(canvas, evt);
-            let message = "Mouse position: " + mousePos.x + "," + mousePos.y;
-            mousexy = message;
-        },
-        false
-    );
+    //Below code is for when implement mobile
+    //let canvas = document.getElementById("canvas");
+
+    //  canvas.addEventListener(
+    //      "mousemove",
+    //      function (evt) {
+    //          let mousePos = getMousePos(canvas, evt);
+    //          let message = "Mouse position: " + mousePos.x + "," + mousePos.y;
+    //          mousexy = message;
+    //      },
+    //      false
+    //  );
 }
-
-//function init() {
-//    resetEverything();
-//    userEvents();
-//}
 
 function draw() {
     let ctx = document.getElementById("canvas").getContext("2d");
@@ -178,7 +189,7 @@ function draw() {
     detectCollisions();
     checkForButtonTrigger();
 }
-//this function interupts the draw sequence to for infoBox button
+//this function interupts the draw sequence for infoBox button
 function checkForButtonTrigger() {
     if (ship.winner == false) {
         if (buttonTrigger == false) {
@@ -317,7 +328,7 @@ function setDirection() {
     ship.vector.y = Math.sin((ship.direction * Math.PI) / 180);
 }
 
-function playSound1() {
+function playBoostSound() {
     if (ship.playSound == true) {
         fireBooster.currentTime = 0;
         fireBooster.play();
@@ -328,7 +339,7 @@ function boost(ship) {
     ship.boost = true;
     ship.velocityx += 0.05 * ship.vector.x;
     ship.velocityy += 0.05 * ship.vector.y;
-    playSound1();
+    playBoostSound();
 }
 
 function makeShip(ctx) {
@@ -576,17 +587,3 @@ function makeAsteroids(time, ctx, planetInfo) {
     );
     ctx.fill();
 }
-
-//function moveAsteroids(planetInfo, time) {
-//    let timeBuffer = (time.getMilliseconds() + 1) / (time.getMilliseconds() + 1);
-//    let middle = {
-//        x: canvasWidth / 2 + offsetAmount.x,
-//        y: canvasHeight / 2 + offsetAmount.y,
-//    };
-//    planetInfo.angle += 0.02 * timeBuffer * planetInfo.speed;
-//    if (planetInfo.angle == 360) {
-//        planetInfo.angle = 0;
-//    }
-//    planetInfo.location.x = Math.sin(planetInfo.angle * (Math.PI / 180)) * planetInfo.orbit + middle.x;
-//    planetInfo.location.y = Math.cos(planetInfo.angle * (Math.PI / 180)) * -planetInfo.orbit + middle.y;
-//}

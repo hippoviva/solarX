@@ -4,7 +4,27 @@ function makeLoadingText() {
     loadingMessageText.textContent = "Loading ...."
     loadingBox.appendChild(loadingMessageText)
     loadingBox.style.display = "inline-block";
+}
 
+function beginAdventureView() {
+    const beginAdventureButton = document.createElement("button");
+    beginAdventureButton.textContent = "Begin Adventure";
+    beginAdventureButton.setAttribute("type", "Button")
+    beginAdventureButton.id = "beginAdventureButton";
+    beginAdventureButton.setAttribute("onclick", "handleBeginAdventureButtonClick()");
+    welcomeBox.appendChild(beginAdventureButton);
+    //welcomeBox.appendChild(board)
+    welcomeBox.style.display = "block";
+}
+
+function makeWelcomeBoxView() {
+    const welcomeBox = document.getElementById("welcomeBox")
+    while (welcomeBox.firstChild) {
+        welcomeBox.removeChild(welcomeBox.firstChild);
+    }
+
+    buttonTrigger = "start"
+    makeWelcomeBoxText();
 }
 
 function makeWelcomeBoxText() {
@@ -29,8 +49,6 @@ function makeWelcomeBoxText() {
     let breaktext6 = document.createElement("br")
     let breaktext7 = document.createElement("br")
     let breaktext8 = document.createElement("br")
-
-
     let text1 = document.createElement("p")
     text1.textContent = "Turmoil has set upon the solar system as Coach Nic 'Poe' Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts. "
     const text101 = document.createElement("p");
@@ -50,8 +68,6 @@ function makeWelcomeBoxText() {
     let text8 = document.createElement("p");
     text8.textContent = "Go Bearcats!!"
     text8.id = "subtitle2";
-
-
     content1.appendChild(title);
     content1.appendChild(breaktext);
     content1.appendChild(subtitle);
@@ -73,39 +89,30 @@ function makeWelcomeBoxText() {
     content1.appendChild(text7);
     content1.appendChild(breaktext8);
     content1.appendChild(text8);
-
     board.appendChild(content1);
-
     const startButton = document.createElement("button");
     startButton.textContent = "Start";
     startButton.setAttribute("type", "Button")
     startButton.id = "startButton";
     startButton.setAttribute("onclick", "handleStartButtonClick()");
-
     welcomeBox.appendChild(startButton);
     welcomeBox.appendChild(board)
-
     welcomeBox.style.display = "block";
-
     ship.playSound = true;
 }
 
-
-
 function setYouWonBoxContent(infoBox) {
     //clear the infoBox div
-
     while (infoBox.firstChild) {
         infoBox.removeChild(infoBox.firstChild);
     }
 
-    // make a new infoBox content
+    // make a you WON infoBox content
     const messageGroup = document.createElement("span");
     infoBox.appendChild(messageGroup);
     const youWonBanner = document.createElement("h2");
     youWonBanner.textContent = "  You competed your mission!!  ";
     messageGroup.appendChild(youWonBanner);
-
     const restartButton = document.createElement("button");
     restartButton.textContent = "Restart";
     restartButton.setAttribute("id", "Resart");
