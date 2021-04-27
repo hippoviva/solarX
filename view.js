@@ -50,9 +50,9 @@ function makeWelcomeBoxText() {
     let breaktext7 = document.createElement("br")
     let breaktext8 = document.createElement("br")
     let text1 = document.createElement("p")
-    text1.textContent = "Turmoil has set upon the solar system as Coach Nic 'Poe' Anderson works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts. "
+    text1.textContent = "Turmoil has set upon the solar system as 'Poe' Smith works diligently to become a master of his trade.. and defeat Weatherford.  He needs you to explore the solar system to find good places to build outposts. "
     const text101 = document.createElement("p");
-    text101.textContent = "He and his commanders, Princess Robin, Christina 'Rey' Majeske and Hans Smith are there to help you, just send them an intersteallar message.";
+    text101.textContent = "He and his commanders, Princess Robin, Megan 'Jar Jar' Adkins and Kami 'Rey' Eades are there to help you, just send them an intersteallar message.";
     let text2 = document.createElement("p");
     text2.textContent = "You will pilot your spacecraft to each object in the solar system that has a green title."
     let text3 = document.createElement("p");
