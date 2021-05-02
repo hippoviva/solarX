@@ -20,7 +20,30 @@
       <div id="welcomeBox" class="welcomeBox"></div>
       <div id="loadingBox" class="loadingBox"></div>
       <div id="infoBox" class="infoBox"></div>
-      <canvas class="canvas" id="canvas" width="900" height="700"></canvas>
+      <div id="controlPanel" class="controlPanel">
+        <button
+          id="rotateLeftButton"
+          onmousedown="handleControlPanel('left')"
+          onmouseup="handleControlPanel('stop')"
+        >
+          Rotate Left
+        </button>
+        <button
+          id="rotateRightButton"
+          onmousedown="handleControlPanel('right')"
+          onmouseup="handleControlPanel('stop')"
+        >
+          Rotate Right
+        </button>
+        <button
+          id="boostButton"
+          onmousedown="handleControlPanel('boost')"
+          onmouseup="handleControlPanel('stop')"
+        >
+          Boost
+        </button>
+      </div>
+      <canvas class="canvas" id="canvas"></canvas>
     </div>
     <!--[if lt IE 7]>
       <p class="browsehappy">

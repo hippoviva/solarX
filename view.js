@@ -137,11 +137,11 @@ function text(ctx) {
 
 function makeUpperListOfObjectsHit(ctx) {
     ctx.fillStyle = "white";
-    ctx.font = "14px serif";
+    //ctx.font = "14px serif";
     ctx.fillText(objectsInSpace.length + " left ", canvasWidth - 100, 20);
     for (let i = 0; i < objectsInSpace.length; i++) {
         ctx.fillStyle = "white";
-        ctx.font = "14px serif";
+  //      ctx.font = "14px serif";
         ctx.fillText(objectsInSpace[i].name, canvasWidth - 100, 40 + i * 20);
     }
 }
@@ -284,3 +284,35 @@ function setInfoBoxContent() {
 
     ship.playSound = false; //turn off sound so they can't hear boost
 }
+
+
+makeControlButtons = function(){
+
+}
+
+   // let container = document.getElementById("container")
+   // const controlPanel = document.createElement("div")
+   // controlPanel.setAttribute("id","controlPanel")
+   // container.appendChild(controlPanel)
+
+   // const rotateLeftButton = document.createElement("button");
+   // rotateLeftButton.setAttribute("id","rotateLeftButton");
+   // rotateLeftButton.setAttribute("type","Button");
+   // rotateLeftButton.textContent= "Rotate Left";
+   // rotateLeftButton.setAttribute("onclick", console.log("left"))
+   // controlPanel.appendChild(rotateLeftButton)
+
+    
+  //  const rotateRightButton = document.createElement("button");
+  //  rotateRightButton.setAttribute("id","rotateRightButton");
+  //  rotateRightButton.textContent= "Rotate Right";
+   // rotateLeftButton.setAttribute("onclick", controlPanel("right"))
+  //  controlPanel.appendChild(rotateRightButton)
+
+   // const boostButton = document.createElement("button");
+   // boostButton.setAttribute("id","boostButton");
+   // boostButton.textContent= "Boost";
+   // boostButton.setAttribute("onclick", controlPanel("boost"))
+   // controlPanel.appendChild(boostButton)
+//}
+

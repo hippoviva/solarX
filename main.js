@@ -1,7 +1,24 @@
-let intElemClientWidth = 900; //need to convert to dynamic for responsiveness;
-let intElemClientHeight = 700; //but don't know how to do it.
-let canvasWidth = intElemClientWidth;
-let canvasHeight = intElemClientHeight;
+var counter2 = 1;
+
+dosomething = function(){
+    counter2 +=1
+ console.log("did something"+counter2)
+};
+
+
+
+//let intElemClientWidth = 900; //need to convert to dynamic for responsiveness;
+//let intElemClientHeight = 700; 
+let sizingBox = document.getElementById('container')
+//console.log(sizingBox.offsetHeight, sizingBox.offsetWidth)
+var canvas = document.getElementById('canvas');
+canvas.height = sizingBox.offsetHeight;
+canvas.width = sizingBox.offsetWidth;
+
+//console.log(canvas.height, canvas.width)
+//but don't know how to do it.
+let canvasWidth = canvas.width;
+let canvasHeight = canvas.height;
 let keyPressed, mousexy;
 let buttonTrigger = false;
 let objectsInSpace = [];
@@ -28,6 +45,7 @@ let ship = {
     planetHit: "none",
     score: 0,
     boost: false,
+    turnAmount:0,
     playSound: true,
     winner: false,
     vector: {
@@ -38,7 +56,8 @@ let ship = {
 };
 const rocketNoFlame = new Image(200, 200);
 rocketNoFlame.src = "imagesfiles/rocketNoFlame.png";
-
+const rocketWithFlame = new Image(200, 200);
+rocketWithFlame.src = "imagesfiles/rocketWithFlame.png";
 function preload() {
     makeLoadingText();
     const listOfImageObjects = [
@@ -114,6 +133,8 @@ function handleStartButtonClick() {
     gameMusic.loop = true;
     gameMusic.volume = 0.04;
     gameMusic.play();
+    document.getElementById("controlPanel").style.display = "block";
+//    makeControlButtons();
     window.requestAnimationFrame(draw)
 }
 
@@ -131,6 +152,7 @@ function resetEverything() {
     ship.y = canvasHeight / 2;
     ship.velocityx = 0;
     ship.velocityy = 0;
+    ship.turnAmount = 0;
     ship.score = 0;
     ship.winnerAmount = 1; // Have to hit all objects to win.
 }
@@ -162,23 +184,15 @@ function makeObjectsInSpaceArray() {
 
 function userEvents() {
     document.addEventListener("keydown", logKey);
+    
 
-    //Below code is for when implement mobile
-    //let canvas = document.getElementById("canvas");
-
-    //  canvas.addEventListener(
-    //      "mousemove",
-    //      function (evt) {
-    //          let mousePos = getMousePos(canvas, evt);
-    //          let message = "Mouse position: " + mousePos.x + "," + mousePos.y;
-    //          mousexy = message;
-    //      },
-    //      false
-    //  );
 }
 
 function draw() {
+   // let container = document.getElementById("container")
     let ctx = document.getElementById("canvas").getContext("2d");
+    //ctx.height=container.offsetHeight;
+    //ctx.width=container.offsetWidth;
     startDraw(ctx);
     text(ctx);
     offsetView();
@@ -324,6 +338,7 @@ function updateShip() {
 }
 
 function setDirection() {
+    ship.direction += ship.turnAmount;
     ship.vector.x = Math.cos((ship.direction * Math.PI) / 180);
     ship.vector.y = Math.sin((ship.direction * Math.PI) / 180);
 }
@@ -344,8 +359,8 @@ function boost(ship) {
 
 function makeShip(ctx) {
     updateShip();
-    const rocketWithFlame = new Image(200, 200);
-    rocketWithFlame.src = "imagesfiles/rocketWithFlame.png";
+  //  const rocketWithFlame = new Image(200, 200);
+  //  rocketWithFlame.src = "imagesfiles/rocketWithFlame.png";
     const pos = ship;
     let x = pos.x;
     let y = pos.y;
@@ -386,6 +401,29 @@ function logKey(logKey) {
     }
 }
 
+
+
+function handleControlPanel(input){
+   // console.log(input,ship.turnAmount);
+    if(input == "right"){
+        ship.turnAmount = 3;
+  //      ship.direction += 5;
+    }
+    if (input == "left"){
+        ship.turnAmount = -3
+//        ship.direction += -5;
+        //console.log("through to handleControlPanel")
+    }
+    if (input == "stop"){
+        ship.turnAmount = 0;
+    }
+
+    if(input == "boost"){
+        boost(ship);
+    }
+    console.log(input,ship.turnAmount)
+}
+
 function getMousePos(canvas, evt) {
     const rect = canvas.getBoundingClientRect();
     return {
@@ -395,7 +433,7 @@ function getMousePos(canvas, evt) {
 }
 
 function startDraw(ctx) {
-    ctx.clearRect(0, 0, canvasWidth, canvasWidth); // clear canvas
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight); // clear canvas
     ctx.fillStyle = "rgba(200, 200, 200, .4)";
     ctx.strokeStyle = "rgba(0, 153, 255, 0.4)";
 }

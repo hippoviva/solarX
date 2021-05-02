@@ -1,18 +1,20 @@
 p {
   margin: 0;
-  padding: 0;
+  padding: 1px;
   color: #FFFF82;
+  font-size:1em;
 }
 
-body {
-  background-color: darkgray;
+html, body {
+  margin:0;
+  height:100%;
 }
 
 .back {
   position: absolute;
   z-index: 1;
-  width: 900px;
-  height: 700px;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -33,17 +35,19 @@ body {
 }
 
 .container {
-  width: 900px;
-  height: 700px;
-  position: relative;
-  margin-left: 50px;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  margin-left: 0;
   padding: 0;
   margin-right: auto;
   z-index: 10;
 }
 
 .canvas {
-  position: relative;
+  width:100vw;
+  height: 100vh;
+  position: absolute;
   display: inline-block;
   z-index: 20;
 }
@@ -53,9 +57,11 @@ body {
   position: absolute;
   padding: .5rem;
   height: auto;
-  width: auto;
-  top: 20%;
-  left: 30%;
+  width: 50%;
+  margin-right:auto;
+  margin-left:auto;
+  top: 10%;
+ left: 25%;
   box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
   border-radius: 15%;
   text-align: center;
@@ -81,14 +87,71 @@ body {
   display: none;
 }
 
+#controlPanel{
+  position:absolute;
+  display:inline-block;
+  top: 90%;
+  width:100%;
+  display:none;
+
+  
+}
+
+#rotateLeftButton {
+  background-color: black;
+  position: relative;
+  padding: .5rem;
+  height: auto;
+  width: auto;
+  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
+  border-radius: 15%;
+  text-align: center;
+  z-index: 30;
+  color: white;
+  font-size:1em;
+  Margin-right: 1rem;
+  margin-left:5%;
+
+}
+#rotateRightButton {
+  background-color: black;
+  position: relative;
+  padding: .5rem;
+  height: auto;
+  width: auto;
+  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
+  border-radius: 15%;
+  text-align: center;
+  z-index: 30;
+  color: white;
+  font-size:1em;
+  Margin-right: 1rem;
+
+}
+#boostButton {
+  background-color: black;
+  position: absolute;
+  padding: .5rem;
+  height: auto;
+  width: auto;
+  right: 10%;
+  box-shadow: 1px 1px 10px 10px rgba(150, 50, 20, 0.5);
+  border-radius: 15%;
+  text-align: center;
+  color: white;
+  z-index:60;
+  font-size:1em;
+  Margin-left: 1rem;
+}
+
 #welcomeBox {
   position: absolute;
-  padding: 1rem;
-  height: 70%;
-  width: auto;
-  top: 25%;
-  /* modified*/
-  left: 40%;
+  height: 100%;
+  text-align:center;
+  width: 100%;
+  top: 0%;
+  /* modified
+  left: 10%;*/
   font-size: 4rem;
   z-index: 30;
   color: white;
@@ -96,6 +159,9 @@ body {
 }
 
 #startButton {
+  position:relative;
+  top:40%;
+  
   font-size: 0.8em;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 10px;
@@ -108,11 +174,12 @@ body {
 }
 
 #beginAdventureButton {
+  position:relative;
   font-size: 0.8em;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 10px;
   margin-left: 5;
-  margin-right: 250px;
+  top:40%;
   background-color: orange;
   border-radius: 40%;
   border-color: red;
